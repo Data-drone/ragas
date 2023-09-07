@@ -42,7 +42,7 @@ def generate(
         result = llm.generate(ps, callbacks=callbacks)
     elif isinstance(llm, BaseChatModel):
         ps = [p.format_messages() for p in prompts]
-        result = llm.generate(ps, callbacks=callbacks)
+        result = llm.generate(ps, callbacks=callbacks, deployment_id='dbdemo-gpt35')
 
     if (isinstance(llm, OpenAI) or isinstance(llm, ChatOpenAI)) and n_swapped:
         llm.n = old_n  # type: ignore
